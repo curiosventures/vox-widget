@@ -1,7 +1,6 @@
 
 
 const ReviewWidget = ({ review }) => {
-    console.log(review)
 
     const daysAgo = (date) => {
         const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
