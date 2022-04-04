@@ -1,6 +1,14 @@
 
 
-const ReviewWidget = () => {
+const ReviewWidget = ({ review }) => {
+    console.log(review)
+
+    const daysAgo = (date) => {
+        const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+        const postedDate = new Date(date);
+        const today = new Date();
+        return Math.round(Math.abs((today - postedDate) / oneDay));
+    };
 
     return (
         <div style={{
@@ -9,8 +17,7 @@ const ReviewWidget = () => {
             bottom: '2px',
             left: '2px',
             background: 'white',
-            // opacity: 0,
-            // transition: 'opacity 0.6s linear'
+            transition: 'opacity 0.6s linear'
         }}
             id="review-widget">
             <div style={{
@@ -22,31 +29,30 @@ const ReviewWidget = () => {
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: '5px' }}>
                     <div style={{ display: 'flex', flexDirection: 'row', maxWidth: '25px', alignItems: 'center' }} id="voxreviewerphoto">
                         <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png" alt="name" style={{ width: '100%', borderRadius: '50%' }} />
-                        <div id="voxreviewername" style={{ marginLeft: '5px' }}>Reviewer Name</div>
+                        <div id="voxreviewername" style={{ marginLeft: '5px' }}>{review["reviewerName"]}</div>
                     </div>
                     <div id="voxratings">
-                        <span className="fa fa-star checked" />
-                        <span className="fa fa-star checked" />
-                        <span className="fa fa-star checked" />
-                        <span className="fa fa-star" />
-                        <span className="fa fa-star" />
+                        {
+                            [...Array(parseInt(review["reviewRating"]))].map((e, i) => <span>&#127775;</span>)
+                        }
+
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%', marginBottom: '5px' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 'bold', padding: '3px' }} id="voxreviewtitle">
-                        Review Title
+                        {review["reviewTitle"]}
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', padding: '3px' }} id="voxreviewcontent">
-                        Review Content
+                        {review["reviewBody"].substring(0, 200) + " ..."}
                     </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
                     <div id="voxdays" style={{ fontWeight: 100, fontStyle: 'italic' }}>
-                        Days Since
+                        {daysAgo(review["reviewDate"]) + " days ago"}
                     </div>
                     <div style={{ maxWidth: '20px' }} id="voxsourcelink">
                         {/* <a href="#" target="_blank"> */}
-                        <img src="https://cdn-icons-png.flaticon.com/512/282/282100.png" alt="source-link-icon" style={{ width: '100%' }} />
+                        <img src={review["reviewerImage"]} alt="source-link-icon" style={{ width: '100%' }} />
 
                         {/* </a> */}
                     </div>
