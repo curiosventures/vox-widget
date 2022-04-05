@@ -4,7 +4,9 @@ import io from 'socket.io-client';
 
 let baseURL = "http://localhost:7000/";
 if (process.env.NODE_ENV === "production") {
-    baseURL = "https://vox-express.herokuapp.com/";
+    // baseURL = "https://vox-express.herokuapp.com/";
+    baseURL = "https://express.voxturba.com/"
+
 }
 
 // export const socket = io(baseURL + window.location.host, { reconnect: true });
