@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 import WidgetDisplay from "./Pages/WidgetDisplay";
+import FullReview from "./Components/FullReview";
 
+
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+
+} from "react-router-dom";
 
 function App({ domElement }) {
 
@@ -20,7 +28,17 @@ function App({ domElement }) {
 
 
   return (
-    <WidgetDisplay />
+    <Router>
+
+      <Routes>
+        <Route path="/review_modal" element={<FullReview />} />
+        <Route path="/" element={<WidgetDisplay />} />
+
+      </Routes>
+
+
+    </Router>
+
   );
 }
 
