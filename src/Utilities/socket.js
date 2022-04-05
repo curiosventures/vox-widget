@@ -8,9 +8,10 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // export const socket = io(baseURL + window.location.host, { reconnect: true });
+
 export const socket = io(baseURL, {
     reconnect: true, query: {
-        roomName: localStorage.getItem("voxclient"),
+        roomName: document.getElementById('vox-widget').getAttribute('data-voxclient'),
     }
 });
 
