@@ -14,13 +14,13 @@ const FullReview = () => {
         return Math.round(Math.abs((today - postedDate) / oneDay));
     };
 
-    console.log(review['reviewerName'])
+    console.log(review)
 
     return (
         <Fragment>
             <div id="vox-modal" style={{
                 position: "fixed",
-                backgroundColor: "rgba(255, 255, 255, 0.30)",
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
                 top: 0,
                 right: 0,
                 bottom: 0,
@@ -35,17 +35,14 @@ const FullReview = () => {
                 lineHeight: 1.2
 
             }}
-
-
-
             >
                 <div style={
                     {
                         width: "400px",
                         position: "absolute",
-                        top: " 50%",
+                        top: "45%",
                         left: " 50%",
-                        transform: "translate(-50%, -50%)",
+                        transform: "translate(-45%, -50%)",
                         padding: "2em",
                         caretColor: "transparent"
 
@@ -90,11 +87,15 @@ const FullReview = () => {
                             {daysAgo(review["reviewDate"]) + " days ago"}
                         </div>
                         <div style={{ maxWidth: '20px' }} id="voxsourcelink">
-                            {/* <a href="#" target="_blank"> */}
                             <img src={review["reviewerImage"]} alt="source-link-icon" style={{ width: '100%' }} />
 
-                            {/* </a> */}
                         </div>
+
+                    </div>
+                    <div style={{ textAlign: 'center', fontSize: "12px", color: "grey" }}>
+                        <a href={review["reviewUrl"]} target="_blank" rel="noreferrer">
+                            View Review at {review["serviceName"]}
+                        </a>
                     </div>
                 </div>
 
