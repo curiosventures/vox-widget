@@ -82,6 +82,7 @@ const ReviewWidget = ({ review }) => {
                 width: "100vw",
                 height: "100vh",
                 display: showModal ? 'block' : 'none',
+                pointerEvents: "none",
                 transition: "all 0.3s",
                 color: "rgb(232, 232, 232)",
                 fontDamily: "Menlo, Consolas, monospace",
@@ -90,8 +91,6 @@ const ReviewWidget = ({ review }) => {
                 lineHeight: 1.2
 
             }}
-
-
 
             >
                 <div style={
@@ -102,54 +101,13 @@ const ReviewWidget = ({ review }) => {
                         left: " 50%",
                         transform: "translate(-50%, -50%)",
                         padding: "2em",
-                        caretColor: "transparent"
-
                     }
-                }>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: "end"
-                    }} >
-                        <div style={{
-                            boxShadow: "0 0 5px -1px rgba(0,0,0,0.2)",
-                            cursor: "pointer",
-                            verticalAlign: "middle",
-                            backgroundColor: "white",
-                            color: "black",
-                            borderRadius: "5px"
-                        }} onClick={() => modalHandler()}>Close</div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: '5px' }}>
-                        <div style={{ display: 'flex', flexDirection: 'row', maxWidth: '25px', alignItems: 'center' }} id="voxreviewerphoto">
-                            <img src="https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png" alt="name" style={{ width: '100%', borderRadius: '50%' }} />
-                            <div id="voxreviewername" style={{ marginLeft: '5px' }}>{review["reviewerName"]}</div>
-                        </div>
-                        <div id="voxratings">
-                            {
-                                [...Array(parseInt(review["reviewRating"]))].map((e, i) => <span key={i}>&#127775;</span>)
-                            }
+                }
+                    onClick={() => modalHandler()}
+                >
 
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', width: '100%', marginBottom: '5px' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', fontWeight: 'bold', padding: '3px' }} id="voxreviewtitle">
-                            {review["reviewTitle"]}
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'column', padding: '3px' }} id="voxreviewcontent">
-                            {review["reviewBody"]}
-                        </div>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
-                        <div id="voxdays" style={{ fontWeight: 100, fontStyle: 'italic' }}>
-                            {daysAgo(review["reviewDate"]) + " days ago"}
-                        </div>
-                        <div style={{ maxWidth: '20px' }} id="voxsourcelink">
-                            {/* <a href="#" target="_blank"> */}
-                            <img src={review["reviewerImage"]} alt="source-link-icon" style={{ width: '100%' }} />
 
-                            {/* </a> */}
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
