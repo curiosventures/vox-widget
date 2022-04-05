@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from "react-dom/client";
 import App from './App';
+import { socket, SocketContext } from './Utilities/socket';
+
 // import reportWebVitals from './reportWebVitals';
+
+
 const voxWidget = document.getElementById("vox-widget")
 
 const root = ReactDOM.createRoot(voxWidget);
 
 root.render(
   <React.StrictMode>
-    <App domElement={voxWidget} />
+    <SocketContext.Provider value={socket}>
+      <App domElement={voxWidget} />
+    </SocketContext.Provider>
   </React.StrictMode>
 );
 

@@ -32,7 +32,7 @@ const ReviewWidget = ({ review }) => {
                     </div>
                     <div id="voxratings">
                         {
-                            [...Array(parseInt(review["reviewRating"]))].map((e, i) => <span>&#127775;</span>)
+                            [...Array(parseInt(review["reviewRating"]))].map((e, i) => <span key={i}>&#127775;</span>)
                         }
 
                     </div>
