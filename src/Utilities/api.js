@@ -2,8 +2,8 @@ import axios from "axios";
 
 let baseURL = "http://localhost:7000/voxturba/";
 if (process.env.NODE_ENV === "production") {
-    baseURL = "https://vox-express.herokuapp.com/voxturba/";
-    // baseURL = "https://express.voxturba.com/voxturba/"
+    // baseURL = "https://vox-express.herokuapp.com/voxturba/";
+    baseURL = "https://express.voxturba.com/voxturba/"
 
 }
 
